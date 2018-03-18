@@ -1,0 +1,13 @@
+<div *ngIf="displayedQuote$ | async as quote">
+  <h1>{{ quote.author }}</h1>
+  <p>{{ quote.text }}</p>
+
+  <button class="dislike-button" *ngIf="alreadyLiked$ | async; else likeTemplate" type="button" (click)="dislike()">Dislike [{{favoriteQuotesCount$ | async}}]</button>
+  <ng-template #likeTemplate>
+    <button class="like-button" type="button" (click)="like()">Like [{{favoriteQuotesCount$ | async}}]</button>
+  </ng-template>
+
+  <button class="next-quote-button" type="button" (click)="loadNextQuote()">Next quote...</button>
+</div>
+
+<div class="loading" *ngIf="loading$ | async">Loading...</div>

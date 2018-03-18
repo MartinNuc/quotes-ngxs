@@ -7,8 +7,9 @@ describe('quotes-ngxs App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it(`should load quote and print it's author`, async () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    const author = await page.getAuthorText();
+    expect(author.length).toBeGreaterThan(0);
   });
 });

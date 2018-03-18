@@ -1,0 +1,3 @@
+<ul>
+  <li *ngFor="let quote of (favoriteQuotes$ | async)"><span class="text">{{quote.text}}</span> <button type="button" (click)="remove(quote)">dislike</button></li>
+</ul>
